@@ -15,6 +15,19 @@ def searchnum(name,dict1):
   if name in dict1:
     return dict1[name]
 
+def create(di,dict1):
+  l=0
+  name=input("enter the name:")
+  while(l!=10):
+    number=input("enter the number:")
+    l=len(number)
+    if(l!=10):
+      print("enter a valid number")
+  mail=input("enter the mailid:")
+  di={"number":number,"mail":mail}
+  dict1[name]=di
+  return dict1
+
 dict1={}
 di={}
 while(1):
@@ -27,11 +40,7 @@ while(1):
   x=int(input())
 
   if(x==1):
-    name=input("enter the name:")
-    number=input("enter the number:")
-    mail=input("enter the mailid:")
-    di={"number":number,"mail":mail}
-    dict1[name]=di
+    dict1=create(di,dict1)
     print("successfully created a contact")
 
   elif(x==2):
