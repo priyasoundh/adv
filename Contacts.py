@@ -23,7 +23,15 @@ def create(di,dict1):
     l=len(number)
     if(l!=10):
       print("enter a valid number")
-  mail=input("enter the mailid:")
+  count=0
+  while(count!=1):
+    mail=input("enter the mailid:")
+    for x in mail:
+      if(x=='@'):
+        count=count+1
+    if(count!=1):
+      print("enter a valid mail")
+      count=0
   di={"number":number,"mail":mail}
   dict1[name]=di
   return dict1
