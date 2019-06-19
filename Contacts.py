@@ -1,8 +1,15 @@
 def search(name,dict1):
-  if name in dict1:
-    return 1
-  else:
-    return 0
+  count=0
+  for x in dict1.keys():
+    if(name.lower()==x.lower()):
+      return x
+      count=count+1
+  print("contact not found")
+  print("suggestionns are")
+  for x in dict1.keys():
+    if x.__contains__(name) :
+        print(x)
+  return 0
 
 def count(dict1):
   s=0
@@ -32,7 +39,7 @@ def create(di,dict1):
       print("enter a valid mail")
       count=0
   di={"number":number,"mail":mail}
-  dict1[name]=di
+  dict1[name.lower()]=di
   return dict1
 
 print("Welcome to contacts")
@@ -123,10 +130,8 @@ while(1):
     else:
       name=input("enter the name to search:")
       x=search(name,dict1)
-      if(x==1):
-        print(dict1[name])
-      elif(x==0):
-        print("contact doesn't exist")
+      if(x!=0):
+        print(dict1[x])
   
   elif(x==5):
     s=count(dict1)
