@@ -9,7 +9,6 @@ def count(dict1):
   for x in dict1.keys():
     s=s+1
   return s
-print("Welcome to contacts")
 
 def searchnum(name,dict1):
   if name in dict1:
@@ -36,6 +35,7 @@ def create(di,dict1):
   dict1[name]=di
   return dict1
 
+print("Welcome to contacts")
 dict1={}
 di={}
 while(1):
@@ -71,28 +71,29 @@ while(1):
     else:
       print("1--> edit number")
       print("2--> edit Name")
-      print("2--> edit mail")
+      print("3--> edit mail")
       d=int(input())
 
       if(d==1):
         name=input("enter the name to edit:")
         x=search(name,dict1)
         if(x==1):
+          num1,mail1=searchnum(name,dict1)
+          mail=dict1[name][mail1]
           number=input("enter the number:")
-          mail=input("enter the mailid:")
           di={"number":number,"mail":mail}
           dict1[name]=di
           print("successfully edited a contact")
         elif(x==0):
           print("contact doesn't exist")
 
-      if(d==2):
+      elif(d==2):
         name=input("enter name to edit:")
         x=search(name,dict1)
         if(x==1):
           num1,mail1=searchnum(name,dict1)
-          num=di[num1]
-          mail=di[mail1]
+          num=dict1[name][num1]
+          mail=dict1[name][mail1]
           dict1.pop(name)
           name=input("enter the name:")
           di={"number":num,"mail":mail}
@@ -101,12 +102,12 @@ while(1):
         elif(x==0):
           print("contact doesn't exist")
       
-      if(d==3):
+      elif(d==3):
         name=input("enter the name to edit:")
         x=search(name,dict1)
         if(x==1):
           num1,mail1=searchnum(name,dict1)
-          num=di[num1]
+          num=dict1[name][num1]
           dict1.pop(name)
           mail=input("enter the mail:")
           di={"number":num,"mail":mail}
